@@ -2,65 +2,69 @@
 #include <fstream>
 #include <ctime>
 #include <stdio.h>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 int main()
 {
+
     srand(time(0));
 
+    fstream file;
+    string word, filename;
+    string vrdi;
+    string uzvrdi;
     string vardi[8];
     string uzvardi[8];
-    string Produkts[8];
     int a = 0;
     int b = 0;
     int c = 0;
     int reizes = 0;
     int ID = 0;
 
+
+    filename = "vardi.txt";
+    file.open(filename.c_str());
+
     cout << "Ludzu ievadiet personu vardus" << endl;
     for(int i = 0; i < 8; i++)
         {
             cout <<"Personas:" << i << endl;
-            cin >> vardi[i];
+            file >> vrdi;
+            cout << vrdi << endl;
+            vardi[i] = vrdi;
         }
     cout << endl;
 
+
     for(int i = 0; i < 8; i++)
         {
-            cout << vardi[i] << endl;
+            cout << vardi[i] << " ";
         }
     cout << endl;
+    file.close();
+
+    filename = "uzvardi.txt";
+    file.open(filename.c_str());
 
     cout << "Ludzu ievadiet personu uzvardus" << endl;
 
-    for(int i = 0; i < 8; i++)
+    for(int j = 0; j < 8; j++)
         {
-            cout <<"Personas:" << i << endl;
-            cin >> uzvardi[i];
+            cout <<"Personas:" << j << endl;
+            file >> uzvrdi;
+            cout << uzvrdi << endl;
+            uzvardi[j] = uzvrdi;
         }
     cout << endl;
 
-    for(int i = 0; i < 8; i++)
+    for(int j = 0; j < 8; j++)
         {
-            cout << uzvardi[i] << endl;
+            cout << uzvardi[j] << " ";
         }
     cout << endl;
-
-     cout << "Ludzu ievadiet produktus" << endl;
-
-    for(int i = 0; i < 8; i++)
-        {
-            cout <<"Produkti:" << i << endl;
-            cin >> Produkts[i];
-        }
-    cout << endl;
-
-    for(int i = 0; i < 8; i++)
-        {
-            cout << Produkts[i] << endl;
-        }
-    cout << endl;
-
+    file.close();
 
     cout << "Ievadiet 2D masinu izmerus, robeza no 3 lidz 9" << endl;
     cin >> a;
@@ -70,6 +74,7 @@ int main()
 
     ofstream mans_fails;
     mans_fails.open("dati.txt",ios::out);
+
 
     for(int x = 0; x < a; x++)
      {
@@ -109,15 +114,19 @@ int main()
                                 cout << " ";
                                 mans_fails << "Ceka nr. ";
                             }
-                             if(x == 6)
-                            {
-                                cout << "Produkts ";
-                                cout << " ";
-                                mans_fails << "Produkts ";
-                            }
+                            if(x == 6)
+                                {
+                                    cout << "Produkti";
+                                    cout << " ";
+                                    mans_fails << "Produkti ";
+                                }
      }
     cout << endl;
     mans_fails << endl;
+
+
+    filename = "produkti.txt";
+    file.open(filename.c_str());
 
     string Rand_Mas[a][b];
     for(int x = 0; x < a; x++)
@@ -150,11 +159,11 @@ int main()
                            {
                                Rand_Mas[x][y] = "#00"+to_string(((rand()%9999)+1000)*99);
                            }
-                             if(y == 6)
-                           {
-                               Rand_Mas[x][y] = Produkts[rand()%8];
-                           }
-
+                           if(y == 6)
+                                {
+                                    file >> word;
+                                    cout << word;
+                                }
 
                             mans_fails << Rand_Mas[x][y] << " ";
                             cout << Rand_Mas[x][y] << " ";
@@ -163,9 +172,10 @@ int main()
                         mans_fails << endl;
                     }
 
+
     cout<< endl;
 
-    mans_fails.close();
+
 
     cout <<"Ludzu ievadiet skaitli no 0 - 7, lai izveletos konkretu personu" << endl;
     cin >> c;
@@ -183,9 +193,9 @@ int main()
     cout << endl;
     cout << endl;
     cout << "Persona "<< vardi[c] <<" tika atrasts " << reizes << " reizes " << endl;
+    mans_fails.close();
+
+
 
     return 0;
 }
-// Eduarts Vitâlijas Hermanis Emils Ingolfs Alvis Kristaps Rolands
-// Zelenis Resnis Cakars Biezins Zeltins Lapa Lietins Ivanovs
-// Cipsi Hotdogi Koncas Kartupeli Zupa Saldejums Maize Desa
