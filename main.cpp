@@ -24,7 +24,7 @@ int main()
     int ID = 0;
 
 
-    filename = "vardi.txt";
+    filename = "Projvardi.txt";
     file.open(filename.c_str());
 
     cout << "Ludzu ievadiet personu vardus" << endl;
@@ -45,7 +45,7 @@ int main()
     cout << endl;
     file.close();
 
-    filename = "uzvardi.txt";
+    filename = "Projuzvardi.txt";
     file.open(filename.c_str());
 
     cout << "Ludzu ievadiet personu uzvardus" << endl;
@@ -125,7 +125,7 @@ int main()
     mans_fails << endl;
 
 
-    filename = "produkti.txt";
+    filename = "Projprodukti.txt";
     file.open(filename.c_str());
 
     string Rand_Mas[a][b];
